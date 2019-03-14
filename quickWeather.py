@@ -1,7 +1,9 @@
 #! python3
 #quickWeather.py - Prints weather for location from cmd
-import json, requests, sys, datetime
-import numpy as np
+import json, sys, datetime
+
+#Use app open weather api key
+appid = #enter api key here
 
 #get current time
 currentTime = datetime.datetime.now().strftime('%m-%d-%Y %H:%M:%S')
@@ -22,7 +24,7 @@ location = ' '.join(sys.argv[1:])
 
 #Download the JSON data from OpenWeatherMap
 #url = https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=524038e6c837861898129844f588104d
-url = 'https://api.openweathermap.org/data/2.5/weather?q=%s&appid=524038e6c837861898129844f588104d' % (location)
+url = 'https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s' % (location, appid)
 response = requests.get(url)
 response.raise_for_status()
 
@@ -33,14 +35,6 @@ weatherData = json.loads(response.text)
 conditions = weatherData['weather']
 temp = weatherData['main']
 CurrentTemp = kToF(temp['temp'])
-Min = kToF(temp['temp'])
-Max = kToF(temp['temp'])
-
-#rows = []
-#columns = ['Date', 'Current', 'Min', 'Max', 'Location']
-#row = [currentTime, CurrentTemp, Min, Max, location]
-#rows.append(row)
-#df = pd.DataFrame(rows, columns = columns)
 
 #Print out info
 print('Current weather in %s:' % (location))
