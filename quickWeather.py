@@ -1,5 +1,6 @@
 #! python3
-#quickWeather.py - Prints weather for location from cmd
+#quickWeather.py - Prints current weather(in Fahrenheit) for location 
+#from cmd using openweather api
 import json, sys, datetime
 
 #Use app open weather api key
@@ -41,6 +42,5 @@ print('Current weather in %s:' % (location))
 print('Current Time: %s' % (currentTime))
 print('The weather is currently : ' + str(kToF(temp['temp'])) + ' *F')
 print('Daily min: ' + str(kToF(temp['temp_min'])) + ' *F. Daily max: ' + str(kToF(temp['temp_max'])) + ' *F')
-#print('Current conditions: ' + conditions['description'])
 input()
 
