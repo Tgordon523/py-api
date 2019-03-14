@@ -6,7 +6,7 @@ import json, sys, datetime
 #Use app open weather api key
 appid = #enter api key here
 
-#get current time
+#get current time 
 currentTime = datetime.datetime.now().strftime('%m-%d-%Y %H:%M:%S')
 
 #convert kalvin to fahrenheit
@@ -24,7 +24,6 @@ if len(sys.argv) < 2:
 location = ' '.join(sys.argv[1:])
 
 #Download the JSON data from OpenWeatherMap
-#url = https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=524038e6c837861898129844f588104d
 url = 'https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s' % (location, appid)
 response = requests.get(url)
 response.raise_for_status()
